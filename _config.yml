@@ -2,3 +2,9 @@ remote_theme: "jekyll/minima@1e8a445"
 
 minima:
   skin: auto
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "posts"
