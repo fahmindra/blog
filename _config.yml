@@ -5,6 +5,5 @@ minima:
 
 defaults:
   - scope:
-      path: "_posts"
     values:
-      layout: "posts"
+       mathjax: true
