@@ -1,5 +1,3 @@
 ---
-title: Welcome to my blog
+title: Beranda
 ---
-
-Selamat Datang
