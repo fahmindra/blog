@@ -2,3 +2,6 @@ remote_theme: "jekyll/minima@1e8a445"
 
 minima:
   skin: auto
+
+plugins:
+  - jekyll-spaceship
