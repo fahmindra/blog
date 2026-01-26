@@ -5,3 +5,6 @@ minima:
 
 plugins:
   - jekyll-spaceship
+
+kramdown:
+  mathjax: true
