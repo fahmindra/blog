@@ -1,0 +1,119 @@
+<!-- Author Bio Component -->
+<div class="author-bio card">
+    {% if include.avatar or site.author.avatar %}
+    <div class="author-avatar">
+        <img src="{{ include.avatar | default: site.author.avatar }}"
+            alt="{{ include.name | default: site.author.name }}">
+    </div>
+    {% endif %}
+
+    <div class="author-info">
+        <h3 class="author-name">{{ include.name | default: site.author.name }}</h3>
+
+        {% if include.bio or site.author.bio %}
+        <p class="author-description">{{ include.bio | default: site.author.bio }}</p>
+        {% endif %}
+
+        {% if include.location or site.author.location %}
+        <div class="author-meta">
+            <span class="author-location">
+                📍 {{ include.location | default: site.author.location }}
+            </span>
+        </div>
+        {% endif %}
+
+        <div class="author-social">
+            {% if include.website or site.author.website %}
+            <a href="{{ include.website | default: site.author.website }}" target="_blank" rel="noopener"
+                title="Website">
+                🌐
+            </a>
+            {% endif %}
+
+            {% if include.twitter or site.twitter_username %}
+            <a href="https://twitter.com/{{ include.twitter | default: site.twitter_username }}" target="_blank"
+                rel="noopener" title="Twitter">
+                🐦
+            </a>
+            {% endif %}
+
+            {% if include.github or site.github_username %}
+            <a href="https://github.com/{{ include.github | default: site.github_username }}" target="_blank"
+                rel="noopener" title="GitHub">
+                💻
+            </a>
+            {% endif %}
+
+            {% if include.linkedin or site.linkedin_username %}
+            <a href="https://linkedin.com/in/{{ include.linkedin | default: site.linkedin_username }}" target="_blank"
+                rel="noopener" title="LinkedIn">
+                💼
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .author-bio {
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+        margin: var(--spacing-lg) 0;
+    }
+
+    .author-avatar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--brand-color);
+        box-shadow: var(--shadow-md);
+    }
+
+    .author-info {
+        flex: 1;
+    }
+
+    .author-name {
+        margin: 0 0 var(--spacing-xs);
+        color: var(--brand-color);
+    }
+
+    .author-description {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .author-meta {
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .author-social {
+        display: flex;
+        gap: var(--spacing-sm);
+    }
+
+    .author-social a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        transition: transform var(--transition-fast);
+    }
+
+    .author-social a:hover {
+        transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+        .author-bio {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .author-social {
+            justify-content: center;
+        }
+    }
+</style>

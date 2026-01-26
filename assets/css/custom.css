@@ -1,0 +1,417 @@
+/* ==========================================
+   Custom Theme Styles for Blog
+   ========================================== */
+
+/* CSS Variables for Easy Customization */
+:root {
+  /* Brand Colors */
+  --brand-color: #2196F3;
+  --accent-color: #FF5722;
+  --dark-bg: #1a1a2e;
+  --light-bg: #f5f5f5;
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --border-color: #2d3561;
+}
+
+/* Light Mode Colors */
+[data-theme="light"] {
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --border-color: #e0e0e0;
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.6;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--brand-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--brand-color);
+}
+
+/* ==========================================
+   Layout Components
+   ========================================== */
+
+/* Header Styles */
+.site-header {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--brand-color);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.site-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.site-nav a:hover {
+  color: var(--brand-color);
+  background-color: rgba(33, 150, 243, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card Styles */
+.card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border-color);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-color);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-meta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================
+   Blog Post Styles
+   ========================================== */
+
+.post-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(255, 87, 34, 0.1));
+  border-radius: 12px;
+}
+
+.post-title {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.post-meta {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.post-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.post-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.post-content img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-md) 0;
+}
+
+/* Code Blocks */
+.post-content pre {
+  background: var(--dark-bg);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  border-left: 4px solid var(--brand-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: rgba(33, 150, 243, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================
+   Custom Components
+   ========================================== */
+
+/* Reading Time Badge */
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: var(--brand-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Tags */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-md) 0;
+}
+
+.tag {
+  background: linear-gradient(135deg, var(--brand-color), var(--accent-color));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* Social Share Buttons */
+.share-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand-color);
+  color: white;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.share-button:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Newsletter Signup */
+.newsletter-box {
+  background: linear-gradient(135deg, var(--brand-color), var(--accent-color));
+  color: white;
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  margin: var(--spacing-lg) 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.newsletter-box h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: var(--spacing-sm);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.newsletter-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: white;
+  color: var(--brand-color);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.newsletter-button:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-slow) ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+  }
+  
+  .post-content {
+    font-size: 1rem;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .share-buttons {
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   Utility Classes
+   ========================================== */
+
+.text-center { text-align: center; }
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.rounded { border-radius: 8px; }
+.rounded-lg { border-radius: 12px; }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
