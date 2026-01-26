@@ -2,17 +2,3 @@ remote_theme: "jekyll/minima@1e8a445"
 
 minima:
   skin: auto
-
-defaults:
-   # _posts
-   - scope:
-       path: ""
-       type: posts
-     values:
-       layout: single
-       author_profile: true
-       read_time: true
-       comments: true
-       share: true
-       related: true
-       mathjax: true
